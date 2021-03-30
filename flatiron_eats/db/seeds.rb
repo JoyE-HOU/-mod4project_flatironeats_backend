@@ -26,7 +26,10 @@ cities = []
 
 5.times { User.create(name: Faker::Name.unique.name, email: Faker::Internet.email, city: cities.sample(1)[0])}
 
-20.times {Restaurant.create(name: Faker::Company.name, location: cities.sample(1)[0], website: Faker::Internet.domain_name)}
+images = []
+5.times {images.push(Faker::LoremFlickr.image)}
+
+20.times {Restaurant.create(name: Faker::Company.name, location: cities.sample(1)[0], website: Faker::Internet.domain_name, image: images.sample)}
 
 Like.create(user_id: User.all.first.id, restaurant_id: Restaurant.all.first.id)
 
