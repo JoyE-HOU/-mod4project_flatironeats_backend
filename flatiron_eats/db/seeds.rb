@@ -24,7 +24,7 @@ Restaurant.destroy_all
 cities = []
 5.times {cities.push(Faker::Address.city)}
 
-5.times { User.create(name: Faker::Name.unique.name, email: Faker::Internet.email, city: cities.sample(1)[0])}
+5.times { User.create(name: Faker::Name.unique.name, email: Faker::Internet.email, city: cities.sample(1)[0], password: 'password')}
 
 images = []
 5.times {images.push(Faker::LoremFlickr.image)}
