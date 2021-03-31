@@ -6,7 +6,16 @@ class UsersController < ApplicationController
 
     def create 
         user = User.new(user_params)
-        user.save
+        if user.valid?
+            user.save
+            render json: {user: UserSerializer.new(user)}, msg: 'Success'
+        else
+            render json: {msg: 'Failed'}
+        end
+    end
+
+    def show 
+        user = User.find_by(id: params[:id])
         render json: user
     end
 
